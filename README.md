@@ -1,1 +1,0 @@
-# sms-lonka-bangla-scheduler
