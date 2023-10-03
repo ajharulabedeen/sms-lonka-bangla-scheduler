@@ -20,7 +20,7 @@ public class FetchDataFromCBS {
 
     @Transactional
     public void fetchCollectionData() {
-        String fetchCollection = "INSERT INTO DBLINK_LOAN_OVERDUE_COLLECTIONS SELECT * FROM ultimus.VW_Dashboard_Loan_Overdue_Collections@dashboardDBLINK1 t WHERE t.lon_dept_id = 4;\n";
+        String fetchCollection = "INSERT INTO DBLINK_LOAN_OVERDUE_COLLECTIONS_ SELECT * FROM ultimus.VW_Dashboard_Loan_Overdue_Collections@dashboardDBLINK1 t WHERE t.lon_dept_id = 4;\n";
 
         try {
             int executeUpdate = entityManager.createNativeQuery(fetchCollection)
@@ -37,7 +37,7 @@ public class FetchDataFromCBS {
 
     @Transactional
     public void fetchDPS() {
-        String fetchDPS = "INSERT INTO DBLINK_DPS select * from ultimus.VW_DASHBOARD_DPS_AC@dashboardDBLINK1 t where t.RO_ID = '1180101525' or t.RM_ID = '1180101525'";
+        String fetchDPS = "INSERT INTO DBLINK_DPS_ select * from ultimus.VW_DASHBOARD_DPS_AC@dashboardDBLINK1 t where t.RO_ID = '1180101525' or t.RM_ID = '1180101525'";
 
         try {
             int executeUpdate = entityManager.createNativeQuery(fetchDPS)
@@ -54,7 +54,7 @@ public class FetchDataFromCBS {
 
     @Transactional
     public void fetchTDR() {
-        String fetchDPS = "INSERT INTO DBLINK_TDR select * from ultimus.VW_DASHBOARD_TDR_AC@dashboardDBLINK1 t where t.RO_ID = '1180101525' or t.RM_ID = '1180101525'";
+        String fetchDPS = "INSERT INTO DBLINK_TDR_ select * from ultimus.VW_DASHBOARD_TDR_AC@dashboardDBLINK1 t where t.RO_ID = '1180101525' or t.RM_ID = '1180101525'";
 
         try {
             int executeUpdate = entityManager.createNativeQuery(fetchDPS)
