@@ -15,13 +15,20 @@ class SchedulerApplicationTests {
     @PersistenceContext
     private EntityManager entityManager;
 
-//    @Test
+    @Autowired
+    FetchDataFromCBS fetchDataFromCBS;
+
+    //    @Test
     @Transactional
     void contextLoads() {
         System.out.println("entityManager = " + entityManager);
         deleteEmp();
     }
 
+    @Test
+    public void tesFetchTDR() {
+        fetchDataFromCBS.fetchTDR();
+    }
 
     public void deleteEmp() {
         String nativeSqlQuery = "DROP TABLE C##LBF_DASHBOARD.EMP107_";
