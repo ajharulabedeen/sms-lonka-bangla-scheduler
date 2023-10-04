@@ -18,11 +18,12 @@ public class FetchDataFromCBS {
     @PersistenceContext
     private EntityManager entityManager;
 
+    @Transactional
     public void fetchCollectionData() {
-        String fetchCollection = "INSERT INTO DBLINK_LOAN_OVERDUE_COLLECTIONS_ SELECT * FROM ultimus.VW_Dashboard_Loan_Overdue_Collections@dashboardDBLINK1 t WHERE t.lon_dept_id = 4;\n";
-
+        String fetchCollection_test = " INSERT INTO DBLINK_LOAN_OVERDUE_COLLECTIONS_ SELECT * FROM ultimus.VW_Dashboard_Loan_Overdue_Collections@dashboardDBLINK1 t WHERE t.lon_dept_id = 4 ";
+        String fetchCollection = " INSERT INTO DBLINK_LOAN_OVERDUE_COLLECTIONS SELECT * FROM ultimus.VW_Dashboard_Loan_Overdue_Collections@dashboardDBLINK1 t WHERE t.lon_dept_id = 4 ";
+        logger.info("\nCollection");
         try {
-            entityManager.getTransaction().begin();
             int executeUpdate = entityManager.createNativeQuery(fetchCollection)
                     .executeUpdate();
             if (executeUpdate > 0) {
@@ -30,17 +31,18 @@ public class FetchDataFromCBS {
             } else {
                 logger.error(" Colelction Data Fetch Failed!");
             }
-            entityManager.getTransaction().commit();
         } catch (Exception e) {
-            logger.error(e.getStackTrace().toString());
+            logger.error("Error: Fetching Collection Date, please the stack trace below.");
+            e.printStackTrace();
         }
     }
 
+    @Transactional
     public void fetchDPS() {
-        String fetchDPS = "INSERT INTO DBLINK_DPS_ select * from ultimus.VW_DASHBOARD_DPS_AC@dashboardDBLINK1 t where t.RO_ID = '1180101525' or t.RM_ID = '1180101525'";
-
+        String fetchDPS_test = "INSERT INTO DBLINK_DPS_ select * from ultimus.VW_DASHBOARD_DPS_AC@dashboardDBLINK1 t where t.RO_ID = '1180101525' or t.RM_ID = '1180101525'";
+        String fetchDPS = "INSERT INTO DBLINK_DPS select * from ultimus.VW_DASHBOARD_DPS_AC@dashboardDBLINK1 t where t.RO_ID = '1180101525' or t.RM_ID = '1180101525'";
+        logger.info("\nDPS");
         try {
-            entityManager.getTransaction().begin();
             int executeUpdate = entityManager.createNativeQuery(fetchDPS)
                     .executeUpdate();
             if (executeUpdate > 0) {
@@ -48,28 +50,30 @@ public class FetchDataFromCBS {
             } else {
                 logger.error(" DPS Data Fetch Failed!");
             }
-            entityManager.getTransaction().commit();
         } catch (Exception e) {
-            logger.error(e.getStackTrace().toString());
+            logger.error("Error: Fetching DPS Date, please the stack trace below.");
+            e.printStackTrace();
         }
     }
 
 
+    @Transactional
     public void fetchTDR() {
-        String fetchDPS = "INSERT INTO DBLINK_TDR_ select * from ultimus.VW_DASHBOARD_TDR_AC@dashboardDBLINK1 t where t.RO_ID = '1180101525' or t.RM_ID = '1180101525'";
-
+        String fetchDPS_test = "INSERT INTO DBLINK_TDR_ select * from ultimus.VW_DASHBOARD_TDR_AC@dashboardDBLINK1 t where t.RO_ID = '1180101525' or t.RM_ID = '1180101525'";
+        String fetchDPS = "INSERT INTO DBLINK_TDR select * from ultimus.VW_DASHBOARD_TDR_AC@dashboardDBLINK1 t where t.RO_ID = '1180101525' or t.RM_ID = '1180101525'";
+        logger.info("\nTDR");
         try {
-            entityManager.getTransaction().begin();
             int executeUpdate = entityManager.createNativeQuery(fetchDPS)
                     .executeUpdate();
+            System.out.println("executeUpdate = " + executeUpdate);
             if (executeUpdate > 0) {
                 logger.info(" TDR Data Fetch Success!");
             } else {
                 logger.error(" TDR Data Fetch Failed!");
             }
-            entityManager.getTransaction().commit();
         } catch (Exception e) {
-            logger.error(e.getStackTrace().toString());
+            logger.error("Error: Fetching TDR Date, please the stack trace below.");
+            e.printStackTrace();
         }
     }
 }

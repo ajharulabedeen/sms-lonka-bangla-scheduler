@@ -26,7 +26,9 @@ class SchedulerApplicationTests {
     }
 
     @Test
+    @Transactional
     public void tesFetchTDR() {
+        System.out.println("SchedulerApplicationTests.tesFetchTDR");
         fetchDataFromCBS.fetchTDR();
     }
 
