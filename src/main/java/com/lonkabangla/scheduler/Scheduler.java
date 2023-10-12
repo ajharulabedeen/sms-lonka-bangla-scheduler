@@ -1,8 +1,9 @@
 package com.lonkabangla.scheduler;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.springframework.scheduling.annotation.Scheduled;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -10,12 +11,13 @@ import java.util.Date;
 @Component
 public class Scheduler {
 
+    @Value("${scheduled.time}")
+    private String scheduledTime;
 
     @Autowired
     FetchDataFromCBS fetchDataFromCBS;
 
-//    every day 10:30 am
-    @Scheduled(cron = "0 30 10 * * ?")
+    @Scheduled(cron = "${scheduled.time}")
     public void cronJobSch() {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
         Date now = new Date();
@@ -25,5 +27,4 @@ public class Scheduler {
         fetchDataFromCBS.fetchDPS();
         fetchDataFromCBS.fetchTDR();
     }
-
 }
