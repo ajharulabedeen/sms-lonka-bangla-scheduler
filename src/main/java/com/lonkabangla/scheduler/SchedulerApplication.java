@@ -1,7 +1,6 @@
 package com.lonkabangla.scheduler;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -14,12 +13,11 @@ import javax.persistence.EntityManager;
 @Transactional
 public class SchedulerApplication {
 
-    @Value("${scheduled.time}")
-    private static String scheduledTime;
+    @Autowired
+    private FetchDataFromCBS fetchDataFromCBS;
 
     public static void main(String[] args) {
-        System.out.println(" Dashboard SchedulerApplication.main");
-        System.out.println("scheduledTime = " + scheduledTime);
+        System.out.println("SchedulerApplication.main");
         SpringApplication.run(SchedulerApplication.class, args);
     }
 
