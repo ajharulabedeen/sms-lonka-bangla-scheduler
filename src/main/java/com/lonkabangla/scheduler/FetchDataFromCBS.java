@@ -140,7 +140,7 @@ public class FetchDataFromCBS {
                 "    BR_TXN_DT, " +
                 "    SYSDATE AS FTECH_DATE " +
                 "FROM ultimus.VW_Dashboard_Loan_Overdue_Collections@dashboardDBLINK1 t " +
-                "WHERE t.lon_dept_id = 4; ";
+                "WHERE t.lon_dept_id = 4 ";
 
 
         logger.info("\nCollection:");
