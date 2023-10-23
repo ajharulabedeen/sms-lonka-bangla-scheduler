@@ -48,7 +48,7 @@ public class FetchDataFromCBS {
                 "    PRODUCT_ID, " +
                 "    LON_DEPT_ID, " +
                 "    BR_TXN_DT, " +
-                "    FTECH_DATE " +
+                "    FETCH_DATE " +
                 ") " +
                 " SELECT " +
                 "    dblink_seq.NEXTVAL, " +
@@ -77,7 +77,7 @@ public class FetchDataFromCBS {
                 "    PRODUCT_ID, " +
                 "    LON_DEPT_ID, " +
                 "    BR_TXN_DT, " +
-                "    SYSDATE AS FTECH_DATE " +
+                "    SYSDATE AS FETCH_DATE " +
                 "FROM ultimus.VW_Dashboard_Loan_Overdue_Collections@dashboardDBLINK1 t " +
                 "WHERE t.lon_dept_id = 4 ";
 
@@ -109,7 +109,7 @@ public class FetchDataFromCBS {
                 "    PRODUCT_ID, " +
                 "    LON_DEPT_ID, " +
                 "    BR_TXN_DT, " +
-                "    FTECH_DATE " +
+                "    FETCH_DATE " +
                 ") " +
                 "SELECT " +
                 "    dblink_seq.NEXTVAL, " +
@@ -138,7 +138,7 @@ public class FetchDataFromCBS {
                 "    PRODUCT_ID, " +
                 "    LON_DEPT_ID, " +
                 "    BR_TXN_DT, " +
-                "    SYSDATE AS FTECH_DATE " +
+                "    SYSDATE AS FETCH_DATE " +
                 "FROM ultimus.VW_Dashboard_Loan_Overdue_Collections@dashboardDBLINK1 t " +
                 "WHERE t.lon_dept_id = 4 ";
 
