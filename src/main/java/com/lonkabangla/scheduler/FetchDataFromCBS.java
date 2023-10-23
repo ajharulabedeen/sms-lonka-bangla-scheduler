@@ -21,7 +21,7 @@ public class FetchDataFromCBS {
     @Transactional
     public void fetchCollectionData() {
         String fetchCollection_test = " INSERT INTO DBLINK_LOAN_OVERDUE_COLLECTIONS_TEMP " +
-                "( " +
+                " ( " +
                 "    collection_id, " +
                 "    ACCOUNT_NO, " +
                 "    ACCOUNT_TITLE, " +
@@ -50,7 +50,7 @@ public class FetchDataFromCBS {
                 "    BR_TXN_DT, " +
                 "    FTECH_DATE " +
                 ") " +
-                "SELECT " +
+                " SELECT " +
                 "    dblink_seq.NEXTVAL, " +
                 "    ACCOUNT_NO, " +
                 "    ACCOUNT_TITLE, " +
@@ -79,7 +79,7 @@ public class FetchDataFromCBS {
                 "    BR_TXN_DT, " +
                 "    SYSDATE AS FTECH_DATE " +
                 "FROM ultimus.VW_Dashboard_Loan_Overdue_Collections@dashboardDBLINK1 t " +
-                "WHERE t.lon_dept_id = 4; ";
+                "WHERE t.lon_dept_id = 4 ";
 
         String fetchCollection = " INSERT INTO DBLINK_LOAN_OVERDUE_COLLECTIONS " +
                 "( " +
