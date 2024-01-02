@@ -81,7 +81,7 @@ public class FetchDataFromCBS {
                 "FROM ultimus.VW_Dashboard_Loan_Overdue_Collections@dashboardDBLINK1 t " +
                 "WHERE t.lon_dept_id = 4 ";
 
-        String fetchCollection = " INSERT INTO DBLINK_LOAN_OVERDUE_COLLECTIONS " +
+        String fetchCollection = "INSERT INTO DBLINK_LOAN_OVERDUE_COLLECTIONS " +
                 "( " +
                 "    collection_id, " +
                 "    ACCOUNT_NO, " +
@@ -109,9 +109,11 @@ public class FetchDataFromCBS {
                 "    PRODUCT_ID, " +
                 "    LON_DEPT_ID, " +
                 "    BR_TXN_DT, " +
-                "    FETCH_DATE " +
-                ") " +
-                "SELECT " +
+                "    FETCH_DATE, " +
+                "    PERIOD, " +
+                "    INSTALL_FIRST_DUE_DT, " +
+                "    EXPIRY_DT " +
+                ")SELECT " +
                 "    dblink_seq.NEXTVAL, " +
                 "    ACCOUNT_NO, " +
                 "    ACCOUNT_TITLE, " +
@@ -138,7 +140,10 @@ public class FetchDataFromCBS {
                 "    PRODUCT_ID, " +
                 "    LON_DEPT_ID, " +
                 "    BR_TXN_DT, " +
-                "    SYSDATE AS FETCH_DATE " +
+                "    SYSDATE AS FETCH_DATE, " +
+                "    PERIOD, " +
+                "    INSTALL_FIRST_DUE_DT, " +
+                "    EXPIRY_DT " +
                 "FROM ultimus.VW_Dashboard_Loan_Overdue_Collections@dashboardDBLINK1 t " +
                 "WHERE t.lon_dept_id = 4 ";
 
@@ -283,7 +288,7 @@ public class FetchDataFromCBS {
 
     @Transactional
     public void fetchTDR() {
-        String fetchDPS_test = " INSERT INTO DBLINK_TDR_TEMP ( " +
+        String fetchTDR_test = " INSERT INTO DBLINK_TDR_TEMP ( " +
                 "    AC_NO, " +
                 "    ACC_TITLE, " +
                 "    INTEREST_RATE, " +
@@ -334,7 +339,7 @@ public class FetchDataFromCBS {
                 "WHERE t.RO_ID = '1180101525' OR t.RM_ID = '1180101525' ";
 
 
-        String fetchDPS = " INSERT INTO DBLINK_TDR ( " +
+        String fetchTDR = " INSERT INTO DBLINK_TDR ( " +
                 "    AC_NO, " +
                 "    ACC_TITLE, " +
                 "    INTEREST_RATE, " +
@@ -387,7 +392,7 @@ public class FetchDataFromCBS {
 
         logger.info("\nTDR");
         try {
-            int executeUpdate = entityManager.createNativeQuery(fetchDPS)
+            int executeUpdate = entityManager.createNativeQuery(fetchTDR)
                     .executeUpdate();
             System.out.println("executeUpdate = " + executeUpdate);
             if (executeUpdate > 0) {

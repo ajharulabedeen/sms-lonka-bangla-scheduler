@@ -27,9 +27,24 @@ class SchedulerApplicationTests {
 
     @Test
     @Transactional
+    public void testCollectionDate() {
+        System.out.println("SchedulerApplicationTests.tesFetchTDR");
+        fetchDataFromCBS.fetchCollectionData();
+    }
+
+
+    @Test
+    @Transactional
     public void tesFetchTDR() {
         System.out.println("SchedulerApplicationTests.tesFetchTDR");
         fetchDataFromCBS.fetchTDR();
+    }
+
+    @Test
+    @Transactional
+    public void tesFetchDPS() {
+        System.out.println("SchedulerApplicationTests.tesFetchDPS");
+        fetchDataFromCBS.fetchDPS();
     }
 
     public void deleteEmp() {
