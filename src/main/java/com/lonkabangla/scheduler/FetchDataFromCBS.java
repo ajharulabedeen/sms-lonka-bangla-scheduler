@@ -212,10 +212,7 @@ public class FetchDataFromCBS {
                 "       PRODUCTNAME, " +
                 "       BR_TXN_DT, " +
                 "       SYSDATE AS FETCH_DATE, " +
-                "       dblink_seq.NEXTVAL " +
-                "FROM ultimus.VW_DASHBOARD_DPS_AC@dashboardDBLINK1 t " +
-                "WHERE t.RO_ID = '1180101525' " +
-                "   OR t.RM_ID = '1180101525' ";
+                "       dblink_seq.NEXTVAL ";
 
         String fetchDPS = " INSERT INTO DBLINK_DPS (AC_NO, " +
                 "                        ACC_TITLE, " +
@@ -265,10 +262,7 @@ public class FetchDataFromCBS {
                 "       BR_TXN_DT, " +
                 "       SYSDATE AS FETCH_DATE, " +
                 "       dblink_seq.NEXTVAL " +
-                "FROM ultimus.VW_DASHBOARD_DPS_AC@dashboardDBLINK1 t " +
-                "WHERE t.RO_ID = '1180101525' " +
-                "   OR t.RM_ID = '1180101525' ";
-
+                "FROM ultimus.VW_DASHBOARD_DPS_AC@dashboardDBLINK1 t ";
 
         logger.info("\nDPS:");
         try {
@@ -335,8 +329,7 @@ public class FetchDataFromCBS {
                 "    BR_TXN_DT, " +
                 "    SYSDATE, " +
                 "    dblink_seq.NEXTVAL " +
-                "FROM ultimus.VW_DASHBOARD_TDR_AC@dashboardDBLINK1 t " +
-                "WHERE t.RO_ID = '1180101525' OR t.RM_ID = '1180101525' ";
+                "FROM ultimus.VW_DASHBOARD_TDR_AC@dashboardDBLINK1 t ";
 
 
         String fetchTDR = " INSERT INTO DBLINK_TDR ( " +
@@ -386,8 +379,7 @@ public class FetchDataFromCBS {
                 "    BR_TXN_DT, " +
                 "    SYSDATE, " +
                 "    dblink_seq.NEXTVAL " +
-                "FROM ultimus.VW_DASHBOARD_TDR_AC@dashboardDBLINK1 t " +
-                "WHERE t.RO_ID = '1180101525' OR t.RM_ID = '1180101525' ";
+                "FROM ultimus.VW_DASHBOARD_TDR_AC@dashboardDBLINK1 t ";
 
 
         logger.info("\nTDR");
